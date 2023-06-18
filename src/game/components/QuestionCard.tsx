@@ -1,6 +1,5 @@
 import { Avatar, Box, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import { FC, ReactElement, useEffect } from "react";
-import useCountdownTimer from "../../hooks/useCountdownTimer";
 
 type QuestionCardProps = {
   text: string;
