@@ -16,40 +16,11 @@ import {
 import { useRef, useState } from "react";
 
 import classes from "./App.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { Category } from "./models/category";
 
 function App() {
-  const categories = [
-    {
-      id: 1,
-      name: "Harry Potter",
-      imageUrl: "https://bit.ly/2Z4KKcF",
-    },
-    {
-      id: 2,
-      name: "Lord of the Rings",
-      imageUrl:
-        "https://images.unsplash.com/photo-1547756536-cde3673fa2e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1241&q=80",
-    },
-    {
-      id: 3,
-      name: "Game of Thrones",
-      imageUrl:
-        "https://images.unsplash.com/photo-1547756536-cde3673fa2e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1241&q=80",
-    },
-    {
-      id: 4,
-      name: "Star Wars",
-      imageUrl:
-        "https://images.unsplash.com/photo-1547756536-cde3673fa2e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1241&q=80",
-    },
-    {
-      id: 5,
-      name: "Marvel",
-      imageUrl:
-        "https://images.unsplash.com/photo-1547756536-cde3673fa2e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1241&q=80",
-    },
-  ];
+  const categories: Category[] = useLoaderData() as Category[];
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -62,7 +33,8 @@ function App() {
   };
 
   const startGame = () => {
-    navigate("/game");
+    const selectedCategoryId = categories.find(x => x.name === selectedCategory)?.id;
+    navigate(`/game/${selectedCategoryId}`);
   };
 
   return (

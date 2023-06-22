@@ -5,7 +5,7 @@ export interface GameState {
     questions: Question[];
     goodAnswers: Question[];
     badAnswers: Question[];
-};
+}
 
 const initialState: GameState = {
     questions: [],
@@ -32,6 +32,8 @@ export const gameSlice = createSlice({
 });
 
 export const { setQuestions, markGoodAnswer, markBadAnswer } = gameSlice.actions;
+
+
 
 export const selectQuestions = (state: { game: GameState }) => state.game.questions;
 export const selectGoodAnswers = (state: { game: GameState }) => state.game.goodAnswers;
