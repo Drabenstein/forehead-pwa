@@ -4,5 +4,17 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), VitePWA()]
+  plugins: [react(), VitePWA({
+    registerType: 'prompt',
+    manifest: {
+      display: 'standalone',
+      name: 'Czółko by MD',
+      short_name: 'Czółko',
+      description: 'Czółko by MD',
+      theme_color: '#1693f9',
+      orientation: 'landscape',
+      lang: 'pl',
+      scope: '/'
+    }
+  })]
 })

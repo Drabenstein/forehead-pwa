@@ -30,6 +30,7 @@ const Routing = () => {
     },
     { path: "/summary", element: <Summary /> },
   ]);
+
   return <RouterProvider router={router} />;
 };
 

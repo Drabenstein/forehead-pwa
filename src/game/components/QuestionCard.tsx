@@ -5,7 +5,7 @@ import {
   Heading,
   Progress,
 } from "@chakra-ui/react";
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement } from "react";
 import QuestionCardBottomBar from "./QuestionCardBottomBar";
 import { useCountdown } from "../../hooks/useCountdown";
 import { useLongPress } from "../../hooks/useLongPress";
