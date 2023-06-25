@@ -1,22 +1,19 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLoaderData } from "react-router-dom";
-import { selectQuestions, setQuestions } from "../state/gameSlice";
-
-const pickRandomNElements = (arr: any[], n: number) =>
-  [...arr].sort(() => 0.5 - Math.random()).slice(0, n);
+import React from "react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { selectNextQuestion } from "../state/gameSlice";
+import QuestionCard from "./components/QuestionCard";
 
 const Game = () => {
-  const allQuestions = useLoaderData() as Question[];
-  const dispatch = useDispatch();
-  const remainingQuestions = useSelector(selectQuestions);
+  const nextQuestion = useSelector(selectNextQuestion);
 
-  useEffect(() => {
-    const chosenQuestions = pickRandomNElements(allQuestions, 10);
-    dispatch(setQuestions(chosenQuestions));
-  }, [allQuestions, dispatch]);
+  if (!nextQuestion) {
+    return <Navigate to="/summary" replace={true} />;
+  }
 
-  return <>{remainingQuestions.map((question) => <div>Wpis {question.id}</div>)}</>;
+  return (
+    <QuestionCard question={nextQuestion} key={nextQuestion.id} time={60} />
+  );
 };
 
 export default Game;

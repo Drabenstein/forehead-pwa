@@ -7,6 +7,9 @@ export interface GameState {
     badAnswers: Question[];
 }
 
+const pickRandomNElements = <Type,>(arr: Type[], n: number) =>
+  [...arr].sort(() => 0.5 - Math.random()).slice(0, n);
+
 const initialState: GameState = {
     questions: [],
     goodAnswers: [],
@@ -17,27 +20,26 @@ export const gameSlice = createSlice({
     name: "game",
     initialState,
     reducers: {
-        setQuestions: (state, action: PayloadAction<Question[]>) => {
-            state.questions = action.payload;
+        chooseNQuestions: (state, action: PayloadAction<Question[]>) => {
+            state.questions = pickRandomNElements(action.payload, 10);
         },
-        markGoodAnswer: (state, action: PayloadAction<Question>) => {
-            state.questions.shift();
+        markAsGoodAnswer: (state, action: PayloadAction<Question>) => {
+            state.questions = state.questions.filter(q => q.id !== action.payload.id);
             state.goodAnswers.push(action.payload);
         },
-        markBadAnswer: (state, action: PayloadAction<Question>) => {
-            state.questions.shift();
+        markAsBadAnswer: (state, action: PayloadAction<Question>) => {
+            state.questions = state.questions.filter(q => q.id !== action.payload.id);
             state.badAnswers.push(action.payload);
         }
     }
 });
 
-export const { setQuestions, markGoodAnswer, markBadAnswer } = gameSlice.actions;
+export const { chooseNQuestions, markAsGoodAnswer, markAsBadAnswer } = gameSlice.actions;
 
 
-
+export const selectNextQuestion = (state: { game: GameState }) => state.game.questions && (state.game.questions[0] ?? null);
 export const selectQuestions = (state: { game: GameState }) => state.game.questions;
 export const selectGoodAnswers = (state: { game: GameState }) => state.game.goodAnswers;
 export const selectBadAnswers = (state: { game: GameState }) => state.game.badAnswers;
-export const selectNextAnswer = (state: { game: GameState }) => state.game.questions[0];
 
 export default gameSlice.reducer;
