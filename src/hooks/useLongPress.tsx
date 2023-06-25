@@ -1,7 +1,4 @@
 import {
-  useState,
-  MouseEvent,
-  useEffect,
   MouseEventHandler,
   TouchEventHandler,
   useRef,

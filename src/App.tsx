@@ -12,6 +12,7 @@ import {
   AlertDialogBody,
   AlertDialogFooter,
   Button,
+  Center,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
@@ -33,7 +34,9 @@ function App() {
   };
 
   const startGame = () => {
-    const selectedCategoryId = categories.find(x => x.name === selectedCategory)?.id;
+    const selectedCategoryId = categories.find(
+      (x) => x.name === selectedCategory
+    )?.id;
     navigate(`/game/${selectedCategoryId}`);
   };
 
@@ -42,10 +45,15 @@ function App() {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: "#003eaa"
+        backgroundColor: "#93d9dc",
       }}
     >
-      <SimpleGrid minChildWidth="200px" gap="6" backgroundColor="#003eaa" padding={5}>
+      <SimpleGrid
+        minChildWidth="200px"
+        gap="6"
+        backgroundColor="#93d9dc"
+        padding={5}
+      >
         {categories.map((category) => (
           <Card
             key={category.id}
@@ -53,13 +61,19 @@ function App() {
             onClick={() => onCardClick(category.name)}
             className={classes.categoryCard}
           >
-            <CardBody justifyContent="center">
-              <Image
-                src={category.imageUrl}
-                alt={category.name}
-                borderRadius="lg"
-                maxHeight="150"
-              />
+            <CardBody
+              justifyContent="center"
+              alignItems="center"
+              justifyItems="center"
+            >
+              <Center>
+                <Image
+                  src={category.imageUrl}
+                  alt={category.name}
+                  borderRadius="lg"
+                  maxHeight="150"
+                />
+              </Center>
               <Heading size="md" textAlign="center" mt="3">
                 {category.name}
               </Heading>
