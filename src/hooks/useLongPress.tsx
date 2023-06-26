@@ -24,35 +24,29 @@ const useLongPress = (
   };
 
   const onMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
     longPressSide.current =
       e.clientX > window.innerWidth / 2 ? "right" : "left";
     startPressTimer();
   };
 
   const onMouseUp: MouseEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
     clearTimeout(timerRef.current!);
   };
 
   const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
     if (isLongPress.current) {
-      e.preventDefault();
       return;
     }
     action.current = "click";
   };
 
   const onTouchStart: TouchEventHandler<HTMLDivElement> = (e) => {
-    console.log("onTouchStart");
-    e.preventDefault();
     longPressSide.current =
       e.changedTouches[0].clientX > window.innerWidth / 2 ? "right" : "left";
     startPressTimer();
   };
 
   const onTouchEnd: TouchEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
     clearTimeout(timerRef.current!);
   };
 

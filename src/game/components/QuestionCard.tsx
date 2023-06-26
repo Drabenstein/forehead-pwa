@@ -5,7 +5,7 @@ import {
   Heading,
   Progress,
 } from "@chakra-ui/react";
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import QuestionCardBottomBar from "./QuestionCardBottomBar";
 import { useCountdown } from "../../hooks/useCountdown";
 import { useLongPress } from "../../hooks/useLongPress";
@@ -37,6 +37,12 @@ const QuestionCard: FC<QuestionCardProps> = ({
       dispatch(markAsBadAnswer(question));
     }
   }
+
+  useEffect(() => {
+    if (millisecondsLeft <= 0) {
+      dispatch(markAsBadAnswer(question));
+    }
+  }, [millisecondsLeft, question, dispatch]);
 
   const longPressHandlers = useLongPress(callback);
 

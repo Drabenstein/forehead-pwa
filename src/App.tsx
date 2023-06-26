@@ -45,19 +45,19 @@ function App() {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: "#93d9dc",
+        backgroundColor: "#d5bdaf",
       }}
     >
       <SimpleGrid
         minChildWidth="200px"
         gap="6"
-        backgroundColor="#93d9dc"
+        backgroundColor="#d5bdaf"
         padding={5}
       >
         {categories.map((category) => (
           <Card
             key={category.id}
-            bg="gray.300"
+            bg="#f5ebe0"
             onClick={() => onCardClick(category.name)}
             className={classes.categoryCard}
           >

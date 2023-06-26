@@ -6,6 +6,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,15 +20,15 @@ const Summary = () => {
   };
 
   return (
-    <Grid gridColumn={2} gridRow={1} gap={2} bgColor="cyan.100" p={3}>
+    <Grid gridColumn={2} gridRow={1} gap={1} bgColor="#edede9" p={3}>
       <GridItem gridColumn={1} gridRow={1} my={3}>
         <Center>
-          <Heading color="green.400">Poprawne</Heading>
+          <Heading color="green.400" textDecoration="underline">Poprawne</Heading>
         </Center>
       </GridItem>
       <GridItem gridColumn={2} gridRow={1} my={3}>
         <Center>
-          <Heading color="red.400">Błędne</Heading>
+          <Heading color="red.400" textDecoration="underline">Błędne</Heading>
         </Center>
       </GridItem>
       {goodAnswers.map((answer, index) => (
@@ -35,11 +36,12 @@ const Summary = () => {
           key={index}
           gridColumn={1}
           gridRow={index + 2}
-          bg="green.200"
           borderRadius="md"
           p={2}
         >
-          {answer.text}
+          <Center>
+            <Text fontWeight="bold" fontSize="xl" textColor="green.400">{answer.text}</Text>
+          </Center>
         </GridItem>
       ))}
       {badAnswers.map((answer, index) => (
@@ -47,18 +49,19 @@ const Summary = () => {
           key={index}
           gridColumn={2}
           gridRow={index + 2}
-          bg="red.200"
           borderRadius="md"
           p={2}
         >
-          {answer.text}
+          <Center>
+            <Text fontWeight="bold" fontSize="xl" textColor="red.400">{answer.text}</Text>
+          </Center>
         </GridItem>
       ))}
       <GridItem colSpan={2}>
         <Center>
           <Button
             width="100%"
-            colorScheme="teal"
+            colorScheme="twitter"
             variant="solid"
             fill="true"
             mt={3}
