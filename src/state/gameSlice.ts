@@ -22,6 +22,8 @@ export const gameSlice = createSlice({
     reducers: {
         chooseNQuestions: (state, action: PayloadAction<Question[]>) => {
             state.questions = pickRandomNElements(action.payload, 10);
+            state.goodAnswers = [];
+            state.badAnswers = [];
         },
         markAsGoodAnswer: (state, action: PayloadAction<Question>) => {
             state.questions = state.questions.filter(q => q.id !== action.payload.id);
