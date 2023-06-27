@@ -10,7 +10,7 @@ import QuestionCardBottomBar from "./QuestionCardBottomBar";
 import { useCountdown } from "../../hooks/useCountdown";
 import { useLongPress } from "../../hooks/useLongPress";
 import { useDispatch } from "react-redux";
-import { markAsBadAnswer, markAsGoodAnswer } from "../../state/gameSlice";
+import { markAsBadAnswer, markAsGoodAnswer, markAsTimeout } from "../../state/gameSlice";
 
 type QuestionCardProps = {
   question: Question;
@@ -40,7 +40,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
 
   useEffect(() => {
     if (millisecondsLeft <= 0) {
-      dispatch(markAsBadAnswer(question));
+      dispatch(markAsTimeout(question));
     }
   }, [millisecondsLeft, question, dispatch]);
 
@@ -50,9 +50,9 @@ const QuestionCard: FC<QuestionCardProps> = ({
     <Flex
       style={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
         background:
-          "radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(55,55,245,0.9960316890428046) 0%, rgba(0,230,255,1) 100%)",
+          "lightskyblue",
       }}
       p="3"
       direction="column"
@@ -63,7 +63,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
           size="3xl"
           color="white"
           dropShadow="5px 5px #ff0000"
-          noOfLines={2}
+          noOfLines={3}
           lineHeight="5rem"
           textAlign="center"
         >

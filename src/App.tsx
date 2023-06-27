@@ -45,19 +45,19 @@ function App() {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: "#d5bdaf",
+        backgroundColor: "ghostwhite",
       }}
     >
       <SimpleGrid
         minChildWidth="200px"
         gap="6"
-        backgroundColor="#d5bdaf"
+        backgroundColor="ghostwhite"
         padding={5}
       >
         {categories.map((category) => (
           <Card
             key={category.id}
-            bg="#f5ebe0"
+            bg="blanchwhite"
             onClick={() => onCardClick(category.name)}
             className={classes.categoryCard}
           >
@@ -100,7 +100,7 @@ function App() {
               <Button ref={cancelRef} onClick={onClose}>
                 Anuluj
               </Button>
-              <Button colorScheme="blue" onClick={startGame} ml={3}>
+              <Button colorScheme="green" onClick={startGame} ml={3}>
                 Zaczynamy
               </Button>
             </AlertDialogFooter>

@@ -3,8 +3,7 @@ import { selectBadAnswers, selectGoodAnswers } from "../state/gameSlice";
 import {
   Button,
   Center,
-  Grid,
-  GridItem,
+  Flex,
   Heading,
   Text,
 } from "@chakra-ui/react";
@@ -20,45 +19,53 @@ const Summary = () => {
   };
 
   return (
-    <Grid gridColumn={2} gridRow={1} gap={1} bgColor="#edede9" p={3}>
-      <GridItem gridColumn={1} gridRow={1} my={3}>
-        <Center>
-          <Heading color="green.400" textDecoration="underline">Poprawne</Heading>
-        </Center>
-      </GridItem>
-      <GridItem gridColumn={2} gridRow={1} my={3}>
-        <Center>
-          <Heading color="red.400" textDecoration="underline">Błędne</Heading>
-        </Center>
-      </GridItem>
-      {goodAnswers.map((answer, index) => (
-        <GridItem
-          key={index}
-          gridColumn={1}
-          gridRow={index + 2}
-          borderRadius="md"
-          p={2}
+    <div style={{ width: "100%", height: "100%" }}>
+      <Flex bgColor="ghostwhite" direction="column" p={4}>
+        <Flex
+          direction="row"
+          justifyContent="space-around"
+          bgColor="ghostwhite"
         >
-          <Center>
-            <Text fontWeight="bold" fontSize="xl" textColor="green.400">{answer.text}</Text>
-          </Center>
-        </GridItem>
-      ))}
-      {badAnswers.map((answer, index) => (
-        <GridItem
-          key={index}
-          gridColumn={2}
-          gridRow={index + 2}
-          borderRadius="md"
-          p={2}
-        >
-          <Center>
-            <Text fontWeight="bold" fontSize="xl" textColor="red.400">{answer.text}</Text>
-          </Center>
-        </GridItem>
-      ))}
-      <GridItem colSpan={2}>
-        <Center>
+          <Flex direction="column" gap={4} w="50%" >
+            <Center>
+              <Heading color="green.400" textDecoration="underline">
+                Poprawne
+              </Heading>
+            </Center>
+            {goodAnswers.map((answer, index) => (
+              <Center key={index}>
+                <Text
+                  fontWeight="bold"
+                  fontSize="xl"
+                  textColor="green.400"
+                  textAlign="center"
+                >
+                  {answer.text}
+                </Text>
+              </Center>
+            ))}
+          </Flex>
+          <Flex direction="column" gap={4} w="50%">
+            <Center>
+              <Heading color="red.400" textDecoration="underline">
+                Błędne
+              </Heading>
+            </Center>
+            {badAnswers.map((answer, index) => (
+              <Center key={index}>
+                <Text
+                  fontWeight="bold"
+                  fontSize="xl"
+                  textColor="red.400"
+                  textAlign="center"
+                >
+                  {answer.text}
+                </Text>
+              </Center>
+            ))}
+          </Flex>
+        </Flex>
+        <Center bgColor="ghostwhite" mt={2}>
           <Button
             width="100%"
             colorScheme="twitter"
@@ -70,8 +77,8 @@ const Summary = () => {
             Powrót do kategorii
           </Button>
         </Center>
-      </GridItem>
-    </Grid>
+      </Flex>
+    </div>
   );
 };
 

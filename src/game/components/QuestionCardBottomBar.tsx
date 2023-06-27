@@ -32,10 +32,11 @@ const QuestionCardBottomBar = ({
       <Spacer />
       <Box flexBasis="15%">
         <Text
-          fontSize="sm"
+          fontSize="md"
           fontWeight="semibold"
           color="white"
           textAlign="right"
+          noOfLines={3}
         >
           {helperText}
         </Text>
