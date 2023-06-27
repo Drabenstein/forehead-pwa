@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import App from "./App";
 import Game from "./game/Game";
 import questionApi from "./api/questionApi";
@@ -9,7 +9,7 @@ import Summary from "./summary/Summary";
 const Routing = () => {
   const dispatch = useDispatch();
 
-  const router = createBrowserRouter([
+  const router = createMemoryRouter([
     {
       path: "/",
       element: <App />,

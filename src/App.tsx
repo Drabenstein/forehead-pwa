@@ -15,10 +15,10 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-
-import classes from "./App.module.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Category } from "./models/category";
+
+import classes from "./App.module.css";
 
 function App() {
   const categories: Category[] = useLoaderData() as Category[];
@@ -41,13 +41,7 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "ghostwhite",
-      }}
-    >
+    <div className={classes.appContainer}>
       <SimpleGrid
         minChildWidth="200px"
         gap="6"
