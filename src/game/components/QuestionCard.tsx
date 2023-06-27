@@ -12,6 +12,8 @@ import { useLongPress } from "../../hooks/useLongPress";
 import { useDispatch } from "react-redux";
 import { markAsBadAnswer, markAsGoodAnswer, markAsTimeout } from "../../state/gameSlice";
 
+import classes from './QuestionCard.module.css';
+
 type QuestionCardProps = {
   question: Question;
   time: number;
@@ -66,11 +68,12 @@ const QuestionCard: FC<QuestionCardProps> = ({
           noOfLines={3}
           lineHeight="5rem"
           textAlign="center"
+          className={classes.unselectable}
         >
           {question.text}
         </Heading>
       </Center>
-      <Flex alignItems="center" mb="2">
+      <Flex alignItems="bottom" mb="2" justifyContent={"space-between"}>
         <QuestionCardBottomBar
           author={question.authorName}
           helperText={question.helperText}

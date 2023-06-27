@@ -1,4 +1,4 @@
-import { Avatar, Box, Center, Spacer, Text } from "@chakra-ui/react";
+import { Avatar, Box, Center, Flex, Spacer, Text } from "@chakra-ui/react";
 
 type QuestionCardBottomBarProps = {
   helperText: string;
@@ -20,17 +20,15 @@ const QuestionCardBottomBar = ({
 }: QuestionCardBottomBarProps) => {
   return (
     <>
-      <Box flexBasis="15%">
-        <Avatar name={author} size="sm" />
-      </Box>
-      <Spacer />
-      <Center>
-        <Text fontSize="xl" color="white" textAlign="center" fontWeight="bold">
+      <Flex flexBasis="15%" flexGrow={0.5}>
+        <Avatar name={author} size="sm" alignSelf="end" />
+      </Flex>
+      <Center flexBasis="15%" flexGrow={0.5}>
+        <Text fontSize="xl" color="white" textAlign="center" alignSelf="end" fontWeight="bold">
           {formatCountdown(secondsLeft)}
         </Text>
       </Center>
-      <Spacer />
-      <Box flexBasis="15%">
+      <Box flexBasis="15%" flexGrow={0.5}>
         <Text
           fontSize="md"
           fontWeight="semibold"

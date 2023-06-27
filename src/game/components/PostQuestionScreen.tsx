@@ -3,6 +3,8 @@ import { resetAnswerState } from "../../state/gameSlice";
 import { useDispatch } from "react-redux";
 import { Center, Flex, Heading } from "@chakra-ui/react";
 
+import classes from './PostQuestionScreen.module.css';
+
 const getPostQuestionMessage = (type: string) => {
     if (type === "good") {
       return "Dobrze!";
@@ -58,6 +60,7 @@ const getPostQuestionMessage = (type: string) => {
             noOfLines={2}
             lineHeight="5rem"
             textAlign="center"
+            className={classes.unselectable}
           >
             {message}
           </Heading>
