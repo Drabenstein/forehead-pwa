@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
+import classes from "./Summary.module.css";
+
 const Summary = () => {
   const goodAnswers = useSelector(selectGoodAnswers);
   const badAnswers = useSelector(selectBadAnswers);
@@ -19,7 +21,7 @@ const Summary = () => {
   };
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div className={classes.summaryContainer}>
       <Flex bgColor="ghostwhite" direction="column" p={4}>
         <Flex
           direction="row"

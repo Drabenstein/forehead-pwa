@@ -19,13 +19,13 @@ const getPostQuestionMessage = (type: string) => {
   
   const getPostQuestionColor = (type: string) => {
     if (type === "good") {
-      return "green";
+      return classes.good;
     } else if (type === "bad") {
-      return "red";
+      return classes.bad;
     } else if (type === "timeout") {
-      return "gold";
+      return classes.timeout;
     } else { 
-      return "black";
+      return classes.error;
     }
   }
   
@@ -44,11 +44,7 @@ const getPostQuestionMessage = (type: string) => {
   
     return (
       <Flex
-        style={{
-          width: "100%",
-          height: "100%",
-          background: backgroundColor
-        }}
+        className={backgroundColor + " " + classes.screenContainer}
         p="3"
         direction="column"
       >

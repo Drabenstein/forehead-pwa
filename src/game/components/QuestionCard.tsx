@@ -50,12 +50,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
 
   return (
     <Flex
-      style={{
-        width: "100%",
-        height: "100%",
-        background:
-          "lightskyblue",
-      }}
+      className={classes.questionCardContainer}
       p="3"
       direction="column"
       {...longPressHandlers}
