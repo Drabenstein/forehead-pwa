@@ -55,7 +55,7 @@ function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef(null);
   const navigate = useNavigate();
-  
+
   const onCardClick = (category: string) => {
     setSelectedCategory(category);
     onOpen();
@@ -63,16 +63,26 @@ function App() {
 
   const startGame = () => {
     navigate("/game");
-  }
+  };
 
   return (
     <>
       <div
-        style={{ width: "100%", height: "100%", backgroundColor: "#003eaa", padding: "1rem" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#003eaa",
+          padding: "1rem",
+        }}
       >
         <SimpleGrid minChildWidth="200px" gap="6">
           {categories.map((category) => (
-            <Card key={category.id} bg="gray.300" onClick={() => onCardClick(category.name)} className={classes.categoryCard}>
+            <Card
+              key={category.id}
+              bg="gray.300"
+              onClick={() => onCardClick(category.name)}
+              className={classes.categoryCard}
+            >
               <CardBody justifyContent="center">
                 <Image
                   src={category.imageUrl}

@@ -10,7 +10,7 @@ import { store } from "./state/store.ts";
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/game", element: <div /> },
-  { path: "/summary", element: <div /> }
+  { path: "/summary", element: <div /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
