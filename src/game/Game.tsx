@@ -8,17 +8,15 @@ const Game = () => {
   const nextQuestion = useSelector(selectNextQuestion);
   const answerState = useSelector(selectAnswerState);
 
-  if (!nextQuestion && answerState === '') {
+  if (!nextQuestion && answerState === "") {
     return <Navigate to="/summary" replace={true} />;
   }
 
-  if (answerState !== '') {
+  if (answerState !== "") {
     return <PostQuestionScreen type={answerState} />;
   }
 
-  return (
-    <QuestionCard question={nextQuestion} time={60} />
-  );
+  return <QuestionCard question={nextQuestion} time={60} />;
 };
 
 export default Game;
