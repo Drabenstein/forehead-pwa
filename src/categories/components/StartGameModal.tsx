@@ -10,12 +10,12 @@ import {
 import { useState } from "react";
 
 type StartGameModalProps = {
-    isOpen: boolean;
-    cancelRef: React.MutableRefObject<null>;
-    onClose: () => void;
-    selectedCategory: string;
-    startGame: () => void;
-}
+  isOpen: boolean;
+  cancelRef: React.MutableRefObject<null>;
+  onClose: () => void;
+  selectedCategory: string;
+  startGame: () => void;
+};
 
 const StartGameModal = ({
   isOpen,
