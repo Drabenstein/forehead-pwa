@@ -8,7 +8,7 @@ type CategoryCardProps = {
   onCardClick: (category: string) => void;
 };
 
-const CategoryCard = ({ category, onCardClick } : CategoryCardProps) => {
+const CategoryCard = ({ category, onCardClick }: CategoryCardProps) => {
   return (
     <Card
       bg="blanchwhite"
