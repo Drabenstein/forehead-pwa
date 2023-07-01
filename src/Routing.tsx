@@ -1,5 +1,5 @@
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
-import App from "./App";
+import Categories from "./categories/Categories";
 import Game from "./game/Game";
 import questionApi from "./api/questionApi";
 import { useDispatch } from "react-redux";
@@ -12,10 +12,11 @@ const Routing = () => {
   const router = createMemoryRouter([
     {
       path: "/",
-      element: <App />,
+      element: <Categories />,
       loader: async () => {
         return await questionApi.getAllCategories();
       },
+      errorElement: <div>Holy Guacamole, coś nie pykło</div>,
     },
     {
       path: "/game/:categoryId",
@@ -27,8 +28,13 @@ const Routing = () => {
         dispatch(chooseNQuestions(allQuestions));
         return allQuestions;
       },
+      errorElement: <div>Holy Guacamole, coś nie pykło</div>,
     },
-    { path: "/summary", element: <Summary /> },
+    {
+      path: "/summary",
+      element: <Summary />,
+      errorElement: <div>Holy Guacamole, coś nie pykło</div>,
+    },
   ]);
 
   return <RouterProvider router={router} />;
