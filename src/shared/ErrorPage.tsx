@@ -3,7 +3,11 @@ import { Center, Flex, Heading } from "@chakra-ui/react";
 import classes from "./ErrorPage.module.css";
 import { isRouteErrorResponse, useRouteError } from "react-router";
 
-const ErrorPage = ({ additionalErrorMessage }: { additionalErrorMessage?: string | undefined}) => {
+const ErrorPage = ({
+  additionalErrorMessage,
+}: {
+  additionalErrorMessage?: string | undefined;
+}) => {
   const error = useRouteError();
 
   let errorMessage: string;

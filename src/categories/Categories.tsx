@@ -1,7 +1,4 @@
-import {
-  Await,
-  useLoaderData,
-} from "react-router-dom";
+import { Await, useLoaderData } from "react-router-dom";
 import { Category } from "../models/category";
 import React from "react";
 import CategoriesView from "./components/CategoriesView";

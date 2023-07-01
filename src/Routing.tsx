@@ -1,4 +1,9 @@
-import { LoaderFunctionArgs, RouterProvider, createMemoryRouter, defer } from "react-router-dom";
+import {
+  LoaderFunctionArgs,
+  RouterProvider,
+  createMemoryRouter,
+  defer,
+} from "react-router-dom";
 import Categories from "./categories/Categories";
 import Game from "./game/Game";
 import questionApi from "./api/questionApi";
@@ -13,7 +18,7 @@ const categoriesLoader = async () => {
   return defer({
     categories: categoriesPromise,
   });
-}
+};
 
 const Routing = () => {
   const dispatch = useDispatch();
