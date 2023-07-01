@@ -23,7 +23,7 @@ const Routing = () => {
       element: <Game />,
       loader: async ({ params }) => {
         const allQuestions = await questionApi.getQuestionsForCategory(
-          params.categoryId
+          Number(params.categoryId)
         );
         dispatch(chooseNQuestions(allQuestions));
         return allQuestions;
