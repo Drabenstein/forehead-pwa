@@ -1,8 +1,8 @@
-const apiUrl = "http://localhost:5194/api";
+import { globalConfig } from "../config";
 
 const questionApi = {
   getQuestionsForCategory: async (categoryId: number) => {
-    return fetch(`${apiUrl}/categories/${categoryId}/questions`)
+    return fetch(`${globalConfig.config.apiUrl}/categories/${categoryId}/questions`)
       .then((response) => response.json())
       .catch((error) => {
         console.log(error);
@@ -10,7 +10,7 @@ const questionApi = {
       });
   },
   getAllCategories: async () => {
-    return fetch(`${apiUrl}/categories`)
+    return fetch(`${globalConfig.config.apiUrl}/categories`)
       .then((response) => response.json())
       .catch((error) => {
         console.log(error);
