@@ -1,12 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectBadAnswers, selectGoodAnswers } from "../state/gameSlice";
-import {
-  Button,
-  Center,
-  Flex,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import classes from "./Summary.module.css";
@@ -28,7 +22,7 @@ const Summary = () => {
           justifyContent="space-around"
           bgColor="ghostwhite"
         >
-          <Flex direction="column" gap={4} w="50%" >
+          <Flex direction="column" gap={4} w="50%">
             <Center>
               <Heading color="green.400" textDecoration="underline">
                 Poprawne
