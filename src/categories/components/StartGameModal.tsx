@@ -23,17 +23,29 @@ type StartGameModalFooterProps = {
   startGame: () => void;
 };
 
-const StartGameModalHeader = ({ selectedCategory }: { selectedCategory: string }) => {
-  return <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            {selectedCategory}
-          </AlertDialogHeader>
-}
+const StartGameModalHeader = ({
+  selectedCategory,
+}: {
+  selectedCategory: string;
+}) => {
+  return (
+    <AlertDialogHeader fontSize="lg" fontWeight="bold">
+      {selectedCategory}
+    </AlertDialogHeader>
+  );
+};
 
- const StartGameModalBody = ({ selectedCategory }: { selectedCategory: string }) => {
-  return <AlertDialogBody>
-            Czy na pewno chcesz zacząć grę w kategorii {selectedCategory}?
-          </AlertDialogBody>
- }
+const StartGameModalBody = ({
+  selectedCategory,
+}: {
+  selectedCategory: string;
+}) => {
+  return (
+    <AlertDialogBody>
+      Czy na pewno chcesz zacząć grę w kategorii {selectedCategory}?
+    </AlertDialogBody>
+  );
+};
 
 const StartGameModalFooter = ({
   cancelRef,
