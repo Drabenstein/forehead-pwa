@@ -4,6 +4,7 @@ import { Button, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import classes from "./Summary.module.css";
+import { useCallback } from "react";
 
 type AnswerColumnProps = {
   answers: { id: number; text: string }[];
@@ -37,9 +38,9 @@ const AnswerColumn = ({ answers, color }: AnswerColumnProps) => {
 const BackButton = () => {
   const navigate = useNavigate();
 
-  const handleBackToCategories = () => {
+  const handleBackToCategories = useCallback(() => {
     navigate("/", { replace: true });
-  };
+  }, [navigate]);
 
   return (
     <Center bgColor="ghostwhite" mt={2}>

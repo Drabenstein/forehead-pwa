@@ -2,6 +2,7 @@ import { Card, CardBody, Center, Image, Heading } from "@chakra-ui/react";
 import { Category } from "../../models/category";
 
 import classes from "./CategoryCard.module.css";
+import { useCallback } from "react";
 
 type CategoryCardProps = {
   category: Category;
@@ -9,10 +10,15 @@ type CategoryCardProps = {
 };
 
 const CategoryCard = ({ category, onCardClick }: CategoryCardProps) => {
+
+  const onCardClickCallback = useCallback(() => {
+    onCardClick(category.name);
+  }, [category.name, onCardClick]);
+
   return (
     <Card
       bg="blanchwhite"
-      onClick={() => onCardClick(category.name)}
+      onClick={onCardClickCallback}
       className={classes.categoryCard}
     >
       <CardBody

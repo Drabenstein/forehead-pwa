@@ -7,7 +7,7 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
 } from "@chakra-ui/modal";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type StartGameModalProps = {
   isOpen: boolean;
@@ -54,10 +54,10 @@ const StartGameModalFooter = ({
 }: StartGameModalFooterProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async () => {
+  const onSubmit = useCallback(() => {
     setIsLoading(true);
-    await startGame();
-  };
+    startGame();
+  }, [startGame]);
 
   return (
     <AlertDialogFooter>

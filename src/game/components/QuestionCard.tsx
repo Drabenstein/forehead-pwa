@@ -35,9 +35,9 @@ const QuestionCard: FC<QuestionCardProps> = ({
   const secondsLeft = Math.ceil(millisecondsLeft / 1000);
 
   const callback = (side: string) => {
-    if (side == "left") {
+    if (side === "left") {
       dispatch(markAsGoodAnswer(question));
-    } else if (side == "right") {
+    } else if (side === "right") {
       dispatch(markAsBadAnswer(question));
     }
   };

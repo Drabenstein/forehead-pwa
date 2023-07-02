@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useAsyncValue, useNavigate } from "react-router";
 import { Category } from "../../models/category";
 import { useDisclosure } from "@chakra-ui/hooks";
@@ -16,17 +16,17 @@ const CategoriesView = () => {
   const cancelRef = useRef(null);
   const navigate = useNavigate();
 
-  const onCardClick = (category: string) => {
+  const onCardClick = useCallback((category: string) => {
     setSelectedCategory(category);
     onOpen();
-  };
+  }, [onOpen]);
 
-  const startGame = () => {
+  const startGame = useCallback(() => {
     const selectedCategoryId = categories.find(
       (x) => x.name === selectedCategory
     )?.id;
     navigate(`/game/${selectedCategoryId}`);
-  };
+  }, [categories, navigate, selectedCategory]);
 
   return (
     <div className={classes.appContainer}>
