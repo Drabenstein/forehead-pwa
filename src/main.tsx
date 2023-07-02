@@ -1,23 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { store } from "./state/store.ts";
+import Routing from "./Routing.tsx";
+import ConfigLoader from "./ConfigLoader.tsx";
 
-const router = createBrowserRouter([
-  { path: "/", element: <App /> },
-  { path: "/game", element: <div /> },
-  { path: "/summary", element: <div /> }
-]);
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ChakraProvider>
-        <RouterProvider router={router} />
+        <ConfigLoader>
+          <Routing />
+        </ConfigLoader>
       </ChakraProvider>
     </Provider>
   </React.StrictMode>
