@@ -17,13 +17,29 @@ type StartGameModalProps = {
   startGame: () => void;
 };
 
-const StartGameModal = ({
-  isOpen,
+type StartGameModalFooterProps = {
+  cancelRef: React.MutableRefObject<null>;
+  onClose: () => void;
+  startGame: () => void;
+};
+
+const StartGameModalHeader = ({ selectedCategory }: { selectedCategory: string }) => {
+  return <AlertDialogHeader fontSize="lg" fontWeight="bold">
+            {selectedCategory}
+          </AlertDialogHeader>
+}
+
+ const StartGameModalBody = ({ selectedCategory }: { selectedCategory: string }) => {
+  return <AlertDialogBody>
+            Czy na pewno chcesz zacząć grę w kategorii {selectedCategory}?
+          </AlertDialogBody>
+ }
+
+const StartGameModalFooter = ({
   cancelRef,
   onClose,
-  selectedCategory,
   startGame,
-}: StartGameModalProps) => {
+}: StartGameModalFooterProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async () => {
@@ -32,6 +48,30 @@ const StartGameModal = ({
   };
 
   return (
+    <AlertDialogFooter>
+      <Button ref={cancelRef} isDisabled={isLoading} onClick={onClose}>
+        Anuluj
+      </Button>
+      <Button
+        colorScheme="green"
+        isLoading={isLoading}
+        onClick={onSubmit}
+        ml={3}
+      >
+        Zaczynamy
+      </Button>
+    </AlertDialogFooter>
+  );
+};
+
+const StartGameModal = ({
+  isOpen,
+  cancelRef,
+  onClose,
+  selectedCategory,
+  startGame,
+}: StartGameModalProps) => {
+  return (
     <AlertDialog
       isOpen={isOpen}
       leastDestructiveRef={cancelRef}
@@ -39,27 +79,13 @@ const StartGameModal = ({
     >
       <AlertDialogOverlay>
         <AlertDialogContent>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            {selectedCategory}
-          </AlertDialogHeader>
-
-          <AlertDialogBody>
-            Czy na pewno chcesz zacząć grę w kategorii {selectedCategory}?
-          </AlertDialogBody>
-
-          <AlertDialogFooter>
-            <Button ref={cancelRef} isDisabled={isLoading} onClick={onClose}>
-              Anuluj
-            </Button>
-            <Button
-              colorScheme="green"
-              isLoading={isLoading}
-              onClick={onSubmit}
-              ml={3}
-            >
-              Zaczynamy
-            </Button>
-          </AlertDialogFooter>
+          <StartGameModalHeader selectedCategory={selectedCategory} />
+          <StartGameModalBody selectedCategory={selectedCategory} />
+          <StartGameModalFooter
+            cancelRef={cancelRef}
+            onClose={onClose}
+            startGame={startGame}
+          />
         </AlertDialogContent>
       </AlertDialogOverlay>
     </AlertDialog>

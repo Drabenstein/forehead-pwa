@@ -13,13 +13,11 @@ const Categories = () => {
   const data = useLoaderData() as CategoriesLoaderData;
 
   return (
-    <>
-      <React.Suspense fallback={<GlobalSpinnerFallback />}>
-        <Await resolve={data.categories} errorElement={<ErrorPage />}>
-          <CategoriesView />
-        </Await>
-      </React.Suspense>
-    </>
+    <React.Suspense fallback={<GlobalSpinnerFallback />}>
+      <Await resolve={data.categories} errorElement={<ErrorPage />}>
+        <CategoriesView />
+      </Await>
+    </React.Suspense>
   );
 };
 

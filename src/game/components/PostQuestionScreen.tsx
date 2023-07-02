@@ -44,7 +44,7 @@ const PostQuestionScreen = ({ type }: { type: string }) => {
 
   return (
     <Flex
-      className={backgroundColor + " " + classes.screenContainer}
+      className={`${backgroundColor} ${classes.screenContainer}`}
       p="3"
       direction="column"
     >

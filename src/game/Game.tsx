@@ -9,7 +9,7 @@ const Game = () => {
   const answerState = useSelector(selectAnswerState);
 
   if (!nextQuestion && answerState === "") {
-    return <Navigate to="/summary" replace={true} />;
+    return <Navigate to="/summary" replace />;
   }
 
   if (answerState !== "") {

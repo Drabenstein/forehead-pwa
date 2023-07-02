@@ -5,14 +5,61 @@ import { useNavigate } from "react-router-dom";
 
 import classes from "./Summary.module.css";
 
-const Summary = () => {
-  const goodAnswers = useSelector(selectGoodAnswers);
-  const badAnswers = useSelector(selectBadAnswers);
+type AnswerColumnProps = {
+  answers: { id: number; text: string }[];
+  color: string;
+};
+
+const AnswerColumn = ({ answers, color }: AnswerColumnProps) => {
+  return (
+    <Flex direction="column" gap={4} w="50%">
+      <Center>
+        <Heading color={color} textDecoration="underline">
+          Poprawne
+        </Heading>
+      </Center>
+      {answers.map((answer) => (
+        <Center key={answer.id}>
+          <Text
+            fontWeight="bold"
+            fontSize="xl"
+            textColor={color}
+            textAlign="center"
+          >
+            {answer.text}
+          </Text>
+        </Center>
+      ))}
+    </Flex>
+  );
+};
+
+const BackButton = () => {
   const navigate = useNavigate();
 
   const handleBackToCategories = () => {
     navigate("/", { replace: true });
   };
+
+  return (
+    <Center bgColor="ghostwhite" mt={2}>
+      <Button
+        width="100%"
+        colorScheme="twitter"
+        variant="solid"
+        fill="true"
+        mt={3}
+        onClick={handleBackToCategories}
+      >
+        Powrót do kategorii
+      </Button>
+    </Center>
+  );
+};
+
+const Summary = () => {
+  const goodAnswers = useSelector(selectGoodAnswers);
+  const badAnswers = useSelector(selectBadAnswers);
 
   return (
     <div className={classes.summaryContainer}>
@@ -22,57 +69,10 @@ const Summary = () => {
           justifyContent="space-around"
           bgColor="ghostwhite"
         >
-          <Flex direction="column" gap={4} w="50%">
-            <Center>
-              <Heading color="green.400" textDecoration="underline">
-                Poprawne
-              </Heading>
-            </Center>
-            {goodAnswers.map((answer, index) => (
-              <Center key={index}>
-                <Text
-                  fontWeight="bold"
-                  fontSize="xl"
-                  textColor="green.400"
-                  textAlign="center"
-                >
-                  {answer.text}
-                </Text>
-              </Center>
-            ))}
-          </Flex>
-          <Flex direction="column" gap={4} w="50%">
-            <Center>
-              <Heading color="red.400" textDecoration="underline">
-                Błędne
-              </Heading>
-            </Center>
-            {badAnswers.map((answer, index) => (
-              <Center key={index}>
-                <Text
-                  fontWeight="bold"
-                  fontSize="xl"
-                  textColor="red.400"
-                  textAlign="center"
-                >
-                  {answer.text}
-                </Text>
-              </Center>
-            ))}
-          </Flex>
+          <AnswerColumn answers={goodAnswers} color="green.400" />
+          <AnswerColumn answers={badAnswers} color="red.400" />
         </Flex>
-        <Center bgColor="ghostwhite" mt={2}>
-          <Button
-            width="100%"
-            colorScheme="twitter"
-            variant="solid"
-            fill="true"
-            mt={3}
-            onClick={handleBackToCategories}
-          >
-            Powrót do kategorii
-          </Button>
-        </Center>
+        <BackButton />
       </Flex>
     </div>
   );

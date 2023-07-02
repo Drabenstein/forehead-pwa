@@ -29,11 +29,13 @@ const useLongPress = (
     startPressTimer();
   };
 
-  const onMouseUp: MouseEventHandler<HTMLDivElement> = (e) => {
-    clearTimeout(timerRef.current!);
+  const onMouseUp: MouseEventHandler<HTMLDivElement> = () => {
+    if (Boolean(timerRef.current) === true) {
+      clearTimeout(timerRef.current);
+    }
   };
 
-  const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
+  const onClick: MouseEventHandler<HTMLDivElement> = () => {
     if (isLongPress.current) {
       return;
     }
@@ -46,8 +48,10 @@ const useLongPress = (
     startPressTimer();
   };
 
-  const onTouchEnd: TouchEventHandler<HTMLDivElement> = (e) => {
-    clearTimeout(timerRef.current!);
+  const onTouchEnd: TouchEventHandler<HTMLDivElement> = () => {
+    if (Boolean(timerRef.current) === true) {
+      clearTimeout(timerRef.current);
+    }
   };
 
   return { onClick, onMouseDown, onMouseUp, onTouchStart, onTouchEnd };

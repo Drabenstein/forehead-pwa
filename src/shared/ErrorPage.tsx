@@ -23,37 +23,37 @@ const ErrorPage = ({
   }
 
   return (
-    <Flex
-      className={classes + " " + classes.screenContainer}
-      p="3"
-      direction="column"
-    >
-      <Center h="100%">
-        <Heading
-          size="3xl"
-          color="white"
-          dropShadow="5px 5px #ff0000"
-          noOfLines={2}
-          lineHeight="5rem"
-          textAlign="center"
-          className={classes.unselectable}
-        >
-          Holy Guacamole!
-        </Heading>
-      </Center>
-      <Center h="100%">
-        <Heading
-          size="xl"
-          dropShadow="5px 5px #ff0000"
-          noOfLines={2}
-          lineHeight="5rem"
-          textAlign="center"
-          color="whitesmoke"
-        >
-          {errorMessage}
-        </Heading>
-      </Center>
-    </Flex>
+      <Flex
+        className={`${classes} ${classes.screenContainer}`}
+        p="3"
+        direction="column"
+      >
+        <Center h="100%">
+          <Heading
+            size="3xl"
+            color="white"
+            dropShadow="5px 5px #ff0000"
+            noOfLines={2}
+            lineHeight="5rem"
+            textAlign="center"
+            className={classes.unselectable}
+          >
+            Holy Guacamole!
+          </Heading>
+        </Center>
+        <Center h="100%">
+          <Heading
+            size="xl"
+            dropShadow="5px 5px #ff0000"
+            noOfLines={2}
+            lineHeight="5rem"
+            textAlign="center"
+            color="whitesmoke"
+          >
+            {errorMessage}
+          </Heading>
+        </Center>
+      </Flex>
   );
 };
 

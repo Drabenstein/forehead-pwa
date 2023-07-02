@@ -12,7 +12,7 @@ import { chooseNQuestions } from "./state/gameSlice";
 import Summary from "./summary/Summary";
 import ErrorPage from "./shared/ErrorPage";
 
-const categoriesLoader = async () => {
+const categoriesLoader = () => {
   const categoriesPromise = questionApi.getAllCategories();
 
   return defer({
