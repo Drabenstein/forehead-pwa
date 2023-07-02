@@ -16,10 +16,13 @@ const CategoriesView = () => {
   const cancelRef = useRef(null);
   const navigate = useNavigate();
 
-  const onCardClick = useCallback((category: string) => {
-    setSelectedCategory(category);
-    onOpen();
-  }, [onOpen]);
+  const onCardClick = useCallback(
+    (category: string) => {
+      setSelectedCategory(category);
+      onOpen();
+    },
+    [onOpen]
+  );
 
   const startGame = useCallback(() => {
     const selectedCategoryId = categories.find(

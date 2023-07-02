@@ -10,7 +10,6 @@ type CategoryCardProps = {
 };
 
 const CategoryCard = ({ category, onCardClick }: CategoryCardProps) => {
-
   const onCardClickCallback = useCallback(() => {
     onCardClick(category.name);
   }, [category.name, onCardClick]);
