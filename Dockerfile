@@ -8,6 +8,6 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine
+FROM fholzer/nginx-brotli:v1.24.0
 WORKDIR /usr/share/nginx/html
 COPY --from=build /build/dist/ .
