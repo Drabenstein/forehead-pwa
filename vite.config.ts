@@ -44,6 +44,17 @@ export default defineConfig({
           },
         ],
       },
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith("/api/categories"),
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "forehead-api-cache",
+            },
+          },
+        ],
+      },
     }),
   ],
 });

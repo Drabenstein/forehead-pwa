@@ -30,7 +30,8 @@ const CategoryCard = ({ category, onCardClick }: CategoryCardProps) => {
             src={category.imageUrl}
             alt={category.name}
             borderRadius="lg"
-            maxHeight="150"
+            height="140"
+            width="250"
           />
         </Center>
         <Heading size="md" textAlign="center" mt="3">
