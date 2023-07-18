@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAsyncValue, useNavigate } from "react-router";
 import { Category } from "../../models/category";
 import { useDisclosure } from "@chakra-ui/hooks";
@@ -7,6 +7,7 @@ import CategoryCard from "./CategoryCard";
 import StartGameModal from "./StartGameModal";
 
 import classes from "./CategoriesView.module.css";
+import questionApi from "../../api/questionApi";
 
 const CategoriesView = () => {
   const categories = useAsyncValue() as Category[];
@@ -15,6 +16,12 @@ const CategoriesView = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    categories.map(async category => {
+      await questionApi.getQuestionsForCategory(category.id);
+    });
+  }, [categories]);
 
   const onCardClick = useCallback(
     (category: string) => {
