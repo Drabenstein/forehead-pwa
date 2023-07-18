@@ -18,7 +18,7 @@ const CategoriesView = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    categories.map(async category => {
+    categories.map(async (category) => {
       await questionApi.getQuestionsForCategory(category.id);
     });
   }, [categories]);
@@ -28,12 +28,12 @@ const CategoriesView = () => {
       setSelectedCategory(category);
       onOpen();
     },
-    [onOpen]
+    [onOpen],
   );
 
   const startGame = useCallback(() => {
     const selectedCategoryId = categories.find(
-      (x) => x.name === selectedCategory
+      (x) => x.name === selectedCategory,
     )?.id;
     navigate(`/game/${selectedCategoryId}`);
   }, [categories, navigate, selectedCategory]);
