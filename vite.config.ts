@@ -44,10 +44,10 @@ export default defineConfig({
           },
         ],
       },
-      includeAssets: 'public/config.json',
+      includeAssets: "public/config.json",
       workbox: {
         navigationPreload: true,
-        additionalManifestEntries: [ "/config.json" ],
+        additionalManifestEntries: ["/config.json"],
         runtimeCaching: [
           {
             urlPattern: ({ url }) => url.pathname.startsWith("/api/categories"),
@@ -55,7 +55,7 @@ export default defineConfig({
             options: {
               cacheName: "forehead-api-cache",
             },
-          }
+          },
         ],
       },
     }),
