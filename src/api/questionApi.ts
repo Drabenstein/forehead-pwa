@@ -9,7 +9,7 @@ const questionApi = {
     return fetch(
       `${globalConfig.config.apiUrl}/categories/${categoryId}/questions`,
       {
-        headers: headers,
+        headers,
       },
     )
       .then((response) => response.json())
@@ -23,7 +23,7 @@ const questionApi = {
     });
 
     return fetch(`${globalConfig.config.apiUrl}/categories`, {
-      headers: headers,
+      headers,
     })
       .then((response) => response.json())
       .catch((error) => {
