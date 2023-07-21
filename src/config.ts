@@ -5,7 +5,7 @@ export interface Config {
 
 export const defaultConfig: Config = {
   apiUrl: "http://localhost:5194/api",
-  apiKey: "1234567890"
+  apiKey: "1234567890",
 };
 
 class GlobalConfig {

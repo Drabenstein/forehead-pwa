@@ -70,7 +70,12 @@ const QuestionCard: FC<QuestionCardProps> = ({
           {question.text}
         </Heading>
       </Center>
-      <Flex alignItems="bottom" mb="2" justifyContent={"space-between"} className={classes.unselectable}>
+      <Flex
+        alignItems="bottom"
+        mb="2"
+        justifyContent={"space-between"}
+        className={classes.unselectable}
+      >
         <QuestionCardBottomBar
           author={question.authorName}
           helperText={question.helperText}
