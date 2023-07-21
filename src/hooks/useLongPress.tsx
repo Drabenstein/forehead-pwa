@@ -7,7 +7,7 @@ import {
 
 const useLongPress = (
   onLongPress: (side: string) => void,
-  pressThreshold = 500
+  pressThreshold = 800
 ) => {
   const timerRef: MutableRefObject<NodeJS.Timeout | undefined> = useRef();
   const isLongPress: MutableRefObject<boolean> = useRef(false);

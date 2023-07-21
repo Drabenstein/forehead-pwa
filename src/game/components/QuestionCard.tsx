@@ -70,18 +70,19 @@ const QuestionCard: FC<QuestionCardProps> = ({
           {question.text}
         </Heading>
       </Center>
-      <Flex alignItems="bottom" mb="2" justifyContent={"space-between"}>
+      <Flex alignItems="bottom" mb="2" justifyContent={"space-between"} className={classes.unselectable}>
         <QuestionCardBottomBar
           author={question.authorName}
           helperText={question.helperText}
           secondsLeft={secondsLeft}
         />
       </Flex>
-      <Box ml="-3" mr="-3" mb="-3">
+      <Box ml="-3" mr="-3" mb="-3" className={classes.unselectable}>
         <Progress
           colorScheme={progressBarColor}
           size="md"
           value={progressBarValue}
+          className={classes.unselectable}
         />
       </Box>
     </Flex>

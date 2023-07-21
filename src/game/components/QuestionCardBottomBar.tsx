@@ -23,7 +23,7 @@ const QuestionCardBottomBar = ({
   return (
     <>
       <Flex flexBasis="15%" flexGrow={0.5}>
-        <Avatar name={author} size="sm" alignSelf="end" />
+        <Avatar name={author} size="sm" alignSelf="end" className={classes.unselectable} />
       </Flex>
       <Center flexBasis="15%" flexGrow={0.5}>
         <Text
